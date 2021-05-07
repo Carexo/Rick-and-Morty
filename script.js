@@ -4,7 +4,7 @@ const basicURL = "https://rickandmortyapi.com/api";
 
 const getData = async () => {
   try {
-    const resposne = await fetch(`${basicURL}/episode/`);
+    const resposne = await fetch(`${basicURL}/character`);
 
     const responseJSON = await resposne.json();
 
