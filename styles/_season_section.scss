@@ -22,7 +22,7 @@
     grid-gap: 0.1rem;
 
     background-color: hsl(0, 0%, 0%);
-    border-radius: 2rem;
+    border-radius: 3rem;
 
     box-shadow: 0 0.2rem 1rem hsla(0, 0, 0, 0.15);
 
@@ -45,6 +45,12 @@
 
   background-color: hsl(180, 17%, 98%);
   color: hsla(0, 0%, 0%, 0.3);
+
+  transition: background-color 300ms;
+}
+
+.season-box:hover {
+  background-color: hsl(205, 94%, 85%);
 }
 
 .active {
@@ -54,6 +60,36 @@
 
   box-shadow: inset 0 1rem 2rem hsla(0, 0, 100, 0.2);
   box-shadow: 0 0.5rem 1rem hsla(0, 0, 0, 0.15);
+}
+
+.active:hover {
+  background-color: hsl(205, 94%, 48%);
+}
+
+.loader {
+  position: absolute;
+  margin: 30vh auto;
+
+  left: 0;
+  right: 0;
+
+  border: 0.7rem solid hsl(0, 0%, 90%);
+  border-top: 0.7rem solid hsl(204, 70%, 53%);
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  animation: spin 2s linear infinite;
+
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media only screen and (min-width: 550px) {
@@ -70,6 +106,14 @@
     h2 {
       font-size: 3rem;
     }
+  }
+
+  .loader {
+    border: 1rem solid hsl(0, 0%, 90%);
+    border-top: 1rem solid hsl(204, 70%, 53%);
+
+    width: 8rem;
+    height: 8rem;
   }
 }
 

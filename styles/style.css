@@ -50,7 +50,7 @@ header img {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 0.1rem;
   background-color: black;
-  border-radius: 2rem;
+  border-radius: 3rem;
   -webkit-box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15);
   cursor: pointer;
@@ -77,6 +77,12 @@ header img {
   font-weight: 500;
   background-color: #f9fbfb;
   color: rgba(0, 0, 0, 0.3);
+  -webkit-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+
+.season-box:hover {
+  background-color: #b5dffd;
 }
 
 .active {
@@ -87,6 +93,47 @@ header img {
           box-shadow: inset 0 1rem 2rem rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.active:hover {
+  background-color: #078eed;
+}
+
+.loader {
+  position: absolute;
+  margin: 30vh auto;
+  left: 0;
+  right: 0;
+  border: 0.7rem solid #e6e6e6;
+  border-top: 0.7rem solid #3398db;
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+  display: none;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 @media only screen and (min-width: 550px) {
@@ -101,6 +148,12 @@ header img {
   }
   .season h2 {
     font-size: 3rem;
+  }
+  .loader {
+    border: 1rem solid #e6e6e6;
+    border-top: 1rem solid #3398db;
+    width: 8rem;
+    height: 8rem;
   }
 }
 
@@ -136,11 +189,15 @@ main {
 }
 
 .character-card {
-  height: 34rem;
+  height: 35rem;
   width: 16rem;
   background-color: #0a515c;
   -webkit-box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.25);
           box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.25);
+  -webkit-transition: -webkit-transform 200ms, -webkit-box-shadow 200ms;
+  transition: -webkit-transform 200ms, -webkit-box-shadow 200ms;
+  transition: transform 200ms, box-shadow 200ms;
+  transition: transform 200ms, box-shadow 200ms, -webkit-transform 200ms, -webkit-box-shadow 200ms;
 }
 
 .character-card img {
@@ -149,7 +206,8 @@ main {
   border: 0.2rem solid #0a515c;
 }
 
-.character-card .informations {
+.character-card .information-wraper {
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -157,13 +215,19 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.character-card .information {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: center;
 }
 
 .character-card h3 {
-  margin: 0.5rem 0 1.5rem 0;
+  text-align: center;
   font-size: 2rem;
   font-weight: 700;
   color: white;
@@ -172,8 +236,8 @@ main {
 .character-card .information {
   display: -ms-inline-grid;
   display: inline-grid;
-  -ms-grid-columns: 25% auto 40%;
-      grid-template-columns: 25% auto 40%;
+  -ms-grid-columns: 20% auto 50%;
+      grid-template-columns: 20% auto 50%;
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
@@ -199,15 +263,31 @@ main {
 }
 
 .character-card .information .answare {
+  word-wrap: break-word;
   justify-items: flex-end;
   font-size: 1.6rem;
   color: #c6e7ec;
+}
+
+.character-card:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-box-shadow: 0 0.4rem 4rem rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0.4rem 4rem rgba(0, 0, 0, 0.6);
 }
 
 @media only screen and (max-width: 374px) {
   main {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+  }
+  .character-card {
+    height: 36rem;
+    width: 18rem;
+  }
+  .character-card .information {
+    -ms-grid-columns: 23% auto 45%;
+        grid-template-columns: 23% auto 45%;
   }
 }
 
@@ -234,7 +314,7 @@ main {
 @media only screen and (min-width: 720px) {
   .character-card {
     width: 27rem;
-    height: 50rem;
+    height: 54rem;
   }
   .character-card h3 {
     font-size: 2.8rem;
