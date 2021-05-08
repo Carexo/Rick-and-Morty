@@ -18,6 +18,7 @@ header img {
 
 .season {
   height: 8rem;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,6 +43,7 @@ header img {
 .season .bar {
   font-size: 2rem;
   height: 4rem;
+  width: 70%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -72,7 +74,6 @@ header img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 5rem;
   font-weight: 500;
   background-color: #f9fbfb;
   color: rgba(0, 0, 0, 0.3);
@@ -86,6 +87,193 @@ header img {
           box-shadow: inset 0 1rem 2rem rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+@media only screen and (min-width: 550px) {
+  .season .bar {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .season {
+    height: 9rem;
+  }
+  .season h2 {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .season {
+    height: 10rem;
+  }
+  .season h2 {
+    font-size: 3.5rem;
+  }
+  .season .bar {
+    height: 5rem;
+    width: 50%;
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  .season .bar {
+    width: 40%;
+  }
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  width: 100%;
+  grid-row-gap: 5rem;
+  margin: 4vh 0 4vh 0;
+}
+
+.character-card {
+  height: 34rem;
+  width: 16rem;
+  background-color: #0a515c;
+  -webkit-box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.25);
+}
+
+.character-card img {
+  width: 100%;
+  height: auto;
+  border: 0.2rem solid #0a515c;
+}
+
+.character-card .informations {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.character-card h3 {
+  margin: 0.5rem 0 1.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.character-card .information {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  -ms-grid-columns: 25% auto 40%;
+      grid-template-columns: 25% auto 40%;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.character-card .information img {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 2rem;
+  width: 2rem;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+}
+
+.character-card .information .question {
+  font-size: 1.2rem;
+  color: #abb8ba;
+}
+
+.character-card .information .answare {
+  justify-items: flex-end;
+  font-size: 1.6rem;
+  color: #c6e7ec;
+}
+
+@media only screen and (max-width: 374px) {
+  main {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 550px) {
+  .character-card {
+    width: 20rem;
+    height: 38rem;
+  }
+  .character-card h3 {
+    font-size: 2.3rem;
+  }
+  .character-card .information img {
+    height: 2.3rem;
+    width: 2.3rem;
+  }
+  .character-card .information .question {
+    font-size: 1.5rem;
+  }
+  .character-card .information .answare {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .character-card {
+    width: 27rem;
+    height: 50rem;
+  }
+  .character-card h3 {
+    font-size: 2.8rem;
+  }
+  .character-card .information {
+    margin-bottom: 1.3rem;
+  }
+  .character-card .information img {
+    height: 3rem;
+    width: 3rem;
+  }
+  .character-card .information .question {
+    font-size: 1.9rem;
+  }
+  .character-card .information .answare {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  main {
+    margin-top: 5vh;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  main {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  main {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 }
 
 * {
