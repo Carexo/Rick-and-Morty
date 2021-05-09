@@ -1,11 +1,14 @@
 "use strict";
 
-const charactersContainer = document.querySelector("main");
+const header = document.querySelector("header");
 const seasonBar = document.querySelector(".bar");
 const seasonSection = document.querySelector(".season");
-const header = document.querySelector("header");
+
+const charactersContainer = document.querySelector("main");
+
 const loader = document.querySelector(".loader");
 const backButton = document.querySelector(".back-button");
+const errorBox = document.querySelector(".error-box");
 
 const baseURL = "https://rickandmortyapi.com/api";
 
@@ -47,7 +50,7 @@ class App {
     loader.style.display = "block";
     try {
       const resposne = await fetch(`${baseURL}/episode/${episodesList}`);
-      if (!resposne.ok) console.error(error);
+      if (!resposne.ok) throw new Error("response is not ok");
 
       const episodes = await resposne.json();
       const charactersURL = new Set();
@@ -60,6 +63,8 @@ class App {
 
       this.getCharactersData(charactersURL);
     } catch (error) {
+      this.appearError();
+      loader.style.display = "none";
       console.error(error.message);
     }
   }
@@ -106,6 +111,7 @@ class App {
       arrayCharactersURL.map((characterURL) => this.getJSON(characterURL))
     );
 
+    console.log(characters.filter((character) => character.gender === "Male"));
     characters.forEach((character) => this.renderCharacterCard(character));
     loader.style.display = "none";
   }
@@ -129,6 +135,10 @@ class App {
 
   backToMain() {
     header.scrollIntoView({ behavior: "smooth" });
+  }
+
+  appearError() {
+    errorBox.style.display = "flex";
   }
 }
 

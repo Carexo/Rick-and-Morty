@@ -1,4 +1,56 @@
 .error-box {
   position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  flex-grow: 1 2;
+
+  width: 50%;
+  height: 8rem;
+
+  background: hsl(62, 71%, 80%);
+  color: #8d8f3d;
+  border-radius: 1rem;
+
   font-size: 2rem;
+  font-weight: 500;
+
+  z-index: 3;
+
+  box-shadow: 0 0.4rem 3rem hsla(0, 0%, 0%, 0.5);
+
+  display: none;
+  p {
+    text-align: center;
+  }
+
+  img {
+    margin-left: 1rem;
+    height: 50%;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .error-box {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .error-box {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .error-box {
+    width: 50rem;
+
+    font-size: 3rem;
+  }
 }
