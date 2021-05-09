@@ -77,22 +77,22 @@ class App {
         <h3>${data.name}</h3>
         <div class="informations">
           <div class="gender information">
-            <img src="images/gender-${data.gender.toLowerCase()}.svg" alt="gender icon" />
+            <img src="images/gender/gender-${data.gender.toLowerCase()}.svg" alt="gender icon" />
             <p class="question">Gender</p>
             <p class="answare">${data.gender}</p>
           </div>
           <div class="status information">
-            <img src="images/status-${data.status.toLowerCase()}.svg" alt="heart icon" />
+            <img src="images/status/status-${data.status.toLowerCase()}.svg" alt="heart icon" />
             <p class="question">Status</p>
             <p class="answare">${data.status}</p>
           </div>
           <div class="species information">
-            <img src="images/species.svg" alt="alien icon"/>
+            <img src="images/species/species.svg" alt="alien icon"/>
             <p class="question">Species</p>
             <p class="answare">${data.species}</p>
           </div>
           <div class="origin information">
-            <img src="images/origin.svg" alt="flaga icon"/>
+            <img src="images/origin/origin.svg" alt="flaga icon"/>
             <p class="question">Origin</p>
             <p class="answare">${data.origin.name.split(" ")[0]}</p>
           </div>
