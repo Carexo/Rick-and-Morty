@@ -2,7 +2,10 @@
 
 const charactersContainer = document.querySelector("main");
 const seasonBar = document.querySelector(".bar");
+const seasonSection = document.querySelector(".season");
+const header = document.querySelector("header");
 const loader = document.querySelector(".loader");
+const backButton = document.querySelector(".back-button");
 
 const baseURL = "https://rickandmortyapi.com/api";
 
@@ -12,6 +15,8 @@ class App {
     this.getCharactersURL(
       "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41"
     );
+    backButton.addEventListener("click", this.backToMain.bind(this));
+    this.ObserveSeasonSection();
   }
 
   getEpisodes(e) {
@@ -62,27 +67,27 @@ class App {
   renderCharacterCard(data) {
     const html = `
     <div class="character-card">
-      <img src="${data.image}" />
+      <img src="${data.image}" alt="image of ${data.name}" />
       <div class="information-wraper">
         <h3>${data.name}</h3>
         <div class="informations">
           <div class="gender information">
-            <img src="images/gender-${data.gender.toLowerCase()}.svg" />
+            <img src="images/gender-${data.gender.toLowerCase()}.svg" alt="gender icon" />
             <p class="question">Gender</p>
             <p class="answare">${data.gender}</p>
           </div>
           <div class="status information">
-            <img src="images/status-${data.status.toLowerCase()}.svg" />
+            <img src="images/status-${data.status.toLowerCase()}.svg" alt="heart icon" />
             <p class="question">Status</p>
             <p class="answare">${data.status}</p>
           </div>
           <div class="species information">
-            <img src="images/species.svg" />
+            <img src="images/species.svg" alt="alien icon"/>
             <p class="question">Species</p>
             <p class="answare">${data.species}</p>
           </div>
           <div class="origin information">
-            <img src="images/origin.svg" />
+            <img src="images/origin.svg" alt="flaga icon"/>
             <p class="question">Origin</p>
             <p class="answare">${data.origin.name.split(" ")[0]}</p>
           </div>
@@ -103,6 +108,27 @@ class App {
 
     characters.forEach((character) => this.renderCharacterCard(character));
     loader.style.display = "none";
+  }
+
+  ObserveSeasonSection() {
+    const appearBackButton = (entries) => {
+      const [entry] = entries;
+
+      if (!entry.isIntersecting) backButton.style.display = "block";
+      else backButton.style.display = "none";
+    };
+
+    const backButtonObserver = new IntersectionObserver(appearBackButton, {
+      root: null,
+      threshold: 0,
+      rootMargin: `500px`,
+    });
+
+    backButtonObserver.observe(seasonSection);
+  }
+
+  backToMain() {
+    header.scrollIntoView({ behavior: "smooth" });
   }
 }
 
