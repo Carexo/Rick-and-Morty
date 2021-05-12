@@ -33,6 +33,80 @@
           ALL
         </div>
       </div>
+      <div class="filter">
+        <img class="filter-icon" src="images/filter.svg" />
+        <form class="hidden">
+          <div class="filter-section">
+            <header>
+              <img src="images/gender/gender-male.svg" />
+              <h4>Gender</h4>
+            </header>
+            <div class="filter-input">
+              <input id="male" name="Male" type="checkbox" data-type="gender" />
+              <label for="male">Male</label>
+            </div>
+            <div class="filter-input">
+              <input
+                id="female"
+                name="Female"
+                type="checkbox"
+                data-type="gender"
+              />
+              <label for="female">Female</label>
+            </div>
+            <div class="filter-input">
+              <input
+                id="genderless"
+                name="Genderless"
+                type="checkbox"
+                data-type="gender"
+              />
+              <label for="genderless">Genderless</label>
+            </div>
+            <div class="filter-input">
+              <input
+                id="unknown-gender"
+                name="unknown"
+                type="checkbox"
+                data-type="gender"
+              />
+              <label for="unknown-gender">Unknown</label>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <header>
+              <img src="images/status/status-dead.svg" />
+              <h4>Status</h4>
+            </header>
+
+            <div class="filter-input">
+              <input
+                id="alieve"
+                name="Alive"
+                type="checkbox"
+                data-type="status"
+              />
+              <label for="alieve">Alive</label>
+            </div>
+            <div class="filter-input">
+              <input id="dead" name="Dead" type="checkbox" data-type="status" />
+              <label for="dead">Dead</label>
+            </div>
+            <div class="filter-input">
+              <input
+                id="unknown-status"
+                name="unknown"
+                type="checkbox"
+                data-type="status"
+              />
+              <label for="unknown-status">Unknown</label>
+            </div>
+          </div>
+
+          <input id="submit-button" type="submit" value="Filter" />
+        </form>
+      </div>
       <div class="loader"></div>
     </secion>
     <div class="back-button"></div>

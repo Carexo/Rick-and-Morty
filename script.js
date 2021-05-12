@@ -6,6 +6,13 @@ const seasonSection = document.querySelector(".season");
 
 const charactersContainer = document.querySelector("main");
 
+const filterButton = document.querySelector(".filter-icon");
+const form = document.querySelector("form");
+const submitFilterButton = document.querySelector("#submit-button");
+
+const checkBoxesGender = form.children[0].querySelectorAll("input");
+const checkBoxesStatus = form.children[1].querySelectorAll("input");
+
 const loader = document.querySelector(".loader");
 const backButton = document.querySelector(".back-button");
 const errorBox = document.querySelector(".error-box");
@@ -14,11 +21,20 @@ const baseURL = "https://rickandmortyapi.com/api";
 
 class App {
   constructor() {
-    seasonBar.addEventListener("click", this.getEpisodes.bind(this));
+    this.characters;
+
     this.getCharactersURL(
       "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41"
     );
+
+    seasonBar.addEventListener("click", this.getEpisodes.bind(this));
     backButton.addEventListener("click", this.backToMain.bind(this));
+    filterButton.addEventListener("click", this.toggleAppearForm);
+    submitFilterButton.addEventListener(
+      "click",
+      this.sumbitFilterForm.bind(this)
+    );
+
     this.ObserveSeasonSection();
   }
 
@@ -33,7 +49,7 @@ class App {
     );
     clicked.classList.add("active");
 
-    charactersContainer.textContent = "";
+    form.classList.add("hidden");
 
     this.getCharactersURL(episodesList);
   }
@@ -47,6 +63,7 @@ class App {
   }
 
   async getCharactersURL(episodesList) {
+    charactersContainer.textContent = "";
     loader.style.display = "block";
     try {
       const resposne = await fetch(`${baseURL}/episode/${episodesList}`);
@@ -107,13 +124,16 @@ class App {
   async getCharactersData(charactersURL) {
     const [...arrayCharactersURL] = charactersURL;
 
-    const characters = await Promise.all(
+    this.characters = await Promise.all(
       arrayCharactersURL.map((characterURL) => this.getJSON(characterURL))
     );
 
-    console.log(characters.filter((character) => character.gender === "Male"));
-    characters.forEach((character) => this.renderCharacterCard(character));
+    this.characters.forEach((character) => this.renderCharacterCard(character));
+
     loader.style.display = "none";
+    [...checkBoxesGender, ...checkBoxesStatus].forEach(
+      (box) => (box.checked = false)
+    );
   }
 
   ObserveSeasonSection() {
@@ -133,12 +153,84 @@ class App {
     backButtonObserver.observe(seasonSection);
   }
 
+  toggleAppearForm() {
+    form.classList.toggle("hidden");
+  }
+
+  sumbitFilterForm(event) {
+    event.preventDefault();
+    this.toggleAppearForm();
+    errorBox.style.display = "none";
+
+    const filtringCharacters = ([...checkBoxes], characters) => {
+      const filtredCharcters = [];
+
+      checkBoxes.forEach((box) => {
+        if (!box.checked) return;
+
+        filtredCharcters.push(
+          ...characters.filter(
+            (character) => character[box.dataset.type] === box.name
+          )
+        );
+      });
+
+      console.log(filtredCharcters);
+      if (
+        filtredCharcters.length === 0 &&
+        checkBoxes.every((box) => !box.checked)
+      )
+        return characters;
+
+      if (
+        filtredCharcters.length === 0 &&
+        checkBoxes.some((box) => box.checked)
+      ) {
+        this.appearError(`Filter doen't exist`);
+        return false;
+      }
+
+      if (filtredCharcters.length > 0 && checkBoxes.some((box) => box.checked))
+        return filtredCharcters.length === 0 ? characters : filtredCharcters;
+    };
+
+    charactersContainer.textContent = "";
+
+    if (
+      [...checkBoxesGender, ...checkBoxesStatus].every((box) => !box.checked)
+    ) {
+      this.characters.forEach((character) =>
+        this.renderCharacterCard(character)
+      );
+      return;
+    }
+
+    const filtredCharacterOfGender = filtringCharacters(
+      checkBoxesGender,
+      this.characters
+    );
+
+    console.log(filtredCharacterOfGender);
+    const filtredCharacterAll = filtringCharacters(
+      checkBoxesStatus,
+      filtredCharacterOfGender
+    );
+
+    console.log(filtredCharacterAll);
+
+    filtredCharacterAll.forEach((character) =>
+      this.renderCharacterCard(character)
+    );
+  }
+
   backToMain() {
     header.scrollIntoView({ behavior: "smooth" });
   }
 
-  appearError() {
+  appearError(message = "Something was wrong. Please Reload the page") {
     errorBox.style.display = "flex";
+
+    errorBox.children[1].textContent = message;
   }
 }
 

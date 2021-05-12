@@ -1,0 +1,197 @@
+.filter {
+  position: absolute;
+
+  width: 4rem;
+  height: 4rem;
+
+  top: 20vw;
+  right: 2vw;
+
+  background: hsl(0, 0%, 95%);
+
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: auto;
+
+    padding: 1rem;
+  }
+}
+
+form {
+  position: relative;
+  right: 10rem;
+  top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  width: 12rem;
+  height: 26rem;
+
+  background-color: hsl(0, 0%, 85%);
+
+  box-shadow: 0 0.4rem 5rem hsla(0, 0%, 0%, 0.7);
+
+  z-index: 5;
+
+  .filter-section {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    header {
+      display: flex;
+      justify-content: space-around;
+
+      height: 3rem;
+
+      margin-top: 0rem;
+
+      img {
+        height: 100%;
+        width: auto;
+
+        padding: 0.6rem;
+      }
+
+      h4 {
+        font-size: 1.6rem;
+        flex-grow: 1;
+
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .filter-input {
+    display: inline-grid;
+    grid-template-columns: 30% 70%;
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 0.5rem;
+
+    label {
+      font-size: 1.2rem;
+    }
+
+    input {
+      margin-left: 1rem;
+    }
+  }
+}
+
+#submit-button {
+  align-self: center;
+
+  font-size: 1.2rem;
+  height: 2rem;
+  width: 60%;
+
+  background-color: hsl(188, 84%, 40%);
+  color: hsl(0, 0%, 100%);
+
+  border: none;
+  outline: none;
+
+  transition: background-color 200ms;
+}
+
+#submit-button:hover {
+  background-color: hsl(188, 84%, 30%);
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (min-width: 720px) {
+  .filter {
+    width: 5rem;
+    height: 5rem;
+
+    img {
+      padding: 1.1rem;
+    }
+  }
+
+  form {
+    width: 18rem;
+    height: 36rem;
+
+    right: 16rem;
+
+    .filter-section {
+      header {
+        height: 4rem;
+        h4 {
+          font-size: 2.4rem;
+        }
+      }
+    }
+
+    .filter-input {
+      margin-top: 0.8rem;
+      label {
+        font-size: 2rem;
+      }
+
+      input {
+        margin-left: 1.3rem;
+        transform: scale(1.5);
+      }
+    }
+  }
+
+  #submit-button {
+    font-size: 2rem;
+    height: 3rem;
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .filter {
+    width: 6.5rem;
+    height: 6.5rem;
+
+    top: 20rem;
+
+    img {
+      padding: 1.6rem;
+    }
+  }
+
+  form {
+    width: 24rem;
+    height: 42rem;
+
+    right: 20rem;
+
+    .filter-section {
+      header {
+        height: 4.5rem;
+        h4 {
+          font-size: 2.5rem;
+        }
+      }
+    }
+
+    .filter-input {
+      margin-top: 0.8rem;
+      label {
+        font-size: 2.1rem;
+      }
+
+      input {
+        margin-left: 1.5rem;
+        transform: scale(1.5);
+      }
+    }
+  }
+}
