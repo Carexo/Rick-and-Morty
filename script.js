@@ -3,6 +3,7 @@
 const header = document.querySelector("header");
 const seasonBar = document.querySelector(".bar");
 const seasonSection = document.querySelector(".season");
+const footer = document.querySelector("footer");
 
 const charactersContainer = document.querySelector("main");
 
@@ -67,6 +68,7 @@ class App {
   async getCharactersURL(episodesList) {
     charactersContainer.textContent = "";
     loader.style.display = "block";
+    footer.style.position = "absolute";
     try {
       const resposne = await fetch(`${baseURL}/episode/${episodesList}`);
       if (!resposne.ok) throw new Error("response is not ok");
@@ -136,13 +138,16 @@ class App {
     [...checkBoxesGender, ...checkBoxesStatus].forEach(
       (box) => (box.checked = false)
     );
+
+    footer.style.position = "static";
   }
 
   ObserveSeasonSection() {
     const appearBackButton = (entries) => {
       const [entry] = entries;
 
-      if (!entry.isIntersecting) backButton.style.display = "block";
+      if (!entry.isIntersecting && this.characters.length > 0)
+        backButton.style.display = "block";
       else backButton.style.display = "none";
     };
 

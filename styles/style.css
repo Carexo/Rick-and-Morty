@@ -363,7 +363,7 @@ main {
 
 .back-button {
   position: fixed;
-  bottom: 1rem;
+  bottom: 2.3rem;
   background-color: #0080ff;
   background-image: url("../images/arrow-up.svg");
   background-repeat: no-repeat;
@@ -634,6 +634,59 @@ form .filter-input input {
     margin-left: 1.5rem;
     -webkit-transform: scale(1.5);
             transform: scale(1.5);
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+
+footer p u {
+  color: #333333;
+  font-size: 1.2rem;
+  font-weight: 500;
+  -webkit-text-decoration-color: #078eed;
+          text-decoration-color: #078eed;
+}
+
+footer p::before {
+  content: "by";
+  position: relative;
+  left: -0.2rem;
+  font-size: 1rem;
+  color: gray;
+}
+
+footer p::after {
+  content: "2021";
+  position: relative;
+  left: 0.2rem;
+  font-size: 1rem;
+  color: gray;
+}
+
+@media only screen and (min-width: 720px) {
+  footer p u {
+    font-size: 1.5rem;
+  }
+  footer p::before {
+    font-size: 1.2rem;
+  }
+  footer p::after {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  footer p u {
+    font-size: 1.7rem;
+  }
+  footer p::before {
+    font-size: 1.4rem;
+  }
+  footer p::after {
+    font-size: 1.4rem;
   }
 }
 
