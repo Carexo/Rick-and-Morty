@@ -6,8 +6,8 @@ _This app is using open API [The Rick and Morty API](https://rickandmortyapi.com
 
 ### **Characters' information:**
 
-- gender `(Male Female Genderless Unknown)`
-- status `(Alive Dead Unknown)`
+- gender `(Male, Female, Genderless, Unknown)`
+- status `(Alive, Dead, Unknown)`
 - species
 - origin
 
