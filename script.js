@@ -49,6 +49,8 @@ class App {
     );
     clicked.classList.add("active");
 
+    errorBox.style.display = "none";
+
     form.classList.add("hidden");
 
     this.getCharactersURL(episodesList);
@@ -186,7 +188,7 @@ class App {
         filtredCharcters.length === 0 &&
         checkBoxes.some((box) => box.checked)
       ) {
-        this.appearError(`Filter doen't exist`);
+        this.appearError(`No items were found!`);
         return false;
       }
 
